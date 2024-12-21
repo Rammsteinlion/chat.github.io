@@ -35,20 +35,39 @@
             alt="profile"
           />
           <div class="data_profile">
-            <div class="name">Username</div>
+            <div class="name">Username<span class="active_user"></span></div>
             <div class="time">Today at 11:41</div>
           </div>
         </div>
       </div>
 
-      <div class="messages" id="chat">
-        <div class="msg_cotainer">
-        </div>
+      <div class="messages" id="chat"></div>
+      
+      <div class="image-preview-container" id="imagePreviewContainer">
+        <img id="imagePreview" alt="Image Preview" class="imagePreviewImg" />
+        <button id="cancelPreview" class="cancel-button">X</button>
       </div>
 
       <div class="input">
-        <i class="fas fa-camera"></i><i class="far fa-laugh-beam"></i
-        ><input id="inputMessage" placeholder="Type your message here!" type="text" />
+        <div>
+          <input
+            type="file"
+            accept="image/*"
+            name="image"
+            id="file"
+            id=""
+            id="imageUpload"
+            class="fileUpload"
+          />
+          <label for="file">
+            <i class="fas fa-camera" id="uploadMsg"></i>
+          </label>
+        </div>
+        <input
+          id="inputMessage"
+          placeholder="Type your message here!"
+          type="text"
+        />
         <i class="fa-regular fa-paper-plane" id="sendMessage"></i>
       </div>
     </section>

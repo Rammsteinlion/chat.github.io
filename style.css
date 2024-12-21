@@ -124,9 +124,90 @@ body {
 .messages .msg_cotainer{
   position: relative;
   max-width: 200px;
+  width: fit-content;
   padding: 7px 10px;
   margin-bottom: 25px;
+  word-wrap: break-word;
+  word-break: break-word;
 }
+
+.msg_cotainer span{
+  color: white;
+}
+
+.message-image {
+  width: 100%; /* La imagen ocupa el 100% del ancho disponible */
+  height: auto; /* Mantiene la proporción de la imagen */
+  border-radius: 8px; /* Bordes redondeados para la imagen */
+  object-fit: contain; /* Mantiene la proporción de la imagen */
+  margin-top: 10px; /* Espaciado superior entre la imagen y el texto */
+}
+
+.name{
+  display: flex;
+  align-items: center;
+  gap: 0.50rem;
+}
+.name .active_user{
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 0.5px solid #e5e5e5;
+}
+
+.active{
+background: #6EC531;
+}
+
+.inactive{
+background-color: #f4f6f6;
+}
+
+/*PREVIEW IMAGE*/
+.image-preview-container {
+  display: none; 
+  position: absolute;
+  bottom:3rem;
+  left: 5px;
+}
+
+#imagePreview {
+  width: 100px;
+  height: 90px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.cancel-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#imageInput {
+  margin-top: 10px;
+}
+/*PREVIEW IMAGE*/
+
+
+/*INPUT FILE*/
+.fileUpload{
+  display: none;
+}
+
+.fileUpload label{
+  cursor: pointer;
+}
+/*INPUT FILE*/
+
 
 .msg_cotainer.send{
   border-radius: var(--rad) var(--rad-sm) var(--rad-sm) var(--rad);
