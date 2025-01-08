@@ -1,17 +1,23 @@
 const chatContainer = document.getElementById("chat");
 const messageInput = document.getElementById("inputMessage");
 const sendMessageButton = document.getElementById("sendMessage");
-const activeUser = document.querySelector('.active_user');
-
+const activeUser = document.querySelector(".active_user");
+const typingIndicator = document.querySelector(".bubble-typing");
 
 let typingTimeout;
 let imageStash = null;
 
-
-activeUser.classList.add('inactive');
+activeUser.classList.add("inactive");
 
 sendMessageButton.addEventListener("click", () => sendMessage("send"));
 messageInput.addEventListener("keydown", (event) => {
+    
+    if(event.target.value !=''){
+      showTyping();
+    }else if(event.target.value === ''){
+      hideTyping();
+    }
+    resetTypingTimeout();
   if (event.key === "Enter") sendMessage("send");
 });
 
@@ -47,8 +53,25 @@ function sendMessage(type) {
     addMessageToChat(content, type); // Enviar solo el texto
   }
 
-  messageInput.value = ""; 
-  scrollToBottom(); 
+  messageInput.value = "";
+  scrollToBottom();
+}
+
+// Reinicia el temporizador al escribir
+function resetTypingTimeout() {
+  clearTimeout(typingTimeout);
+  typingTimeout = setTimeout(() => {
+    hideTyping();
+  }, 1000); 
+}
+
+
+function showTyping() {
+  typingIndicator.classList.remove("hidden");
+}
+
+function  hideTyping() {
+  typingIndicator.classList.add("hidden");
 }
 
 function addMessageToChat(content, type) {
@@ -86,7 +109,7 @@ function scrollToBottom() {
   chatContainer.scrollTop = chatContainer.scrollHeight;
 }
 
-//FUncion para cargar imagenes
+//Funcion para cargar imagenes
 const imagePreviewContainer = document.querySelector("#imagePreviewContainer");
 const imagePreview = document.getElementById("imagePreview");
 const cancelPreview = document.getElementById("cancelPreview");
@@ -107,7 +130,7 @@ document.querySelector("input[type=file]").onchange = function (event) {
 cancelPreview.addEventListener("click", () => cancelImage());
 
 function cancelImage() {
-  imagePreviewContainer.style.display = "none"; 
-  imagePreview.src = ""; 
+  imagePreviewContainer.style.display = "none";
+  imagePreview.src = "";
   imageStash = null;
 }
